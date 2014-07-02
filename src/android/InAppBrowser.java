@@ -95,6 +95,7 @@ public class InAppBrowser extends CordovaPlugin {
     private static final String TITLE_COLOR = "titlecolor";
     private static final String CLOSE_URL = "closeUrl";
     private static final String CLOSE_TEXT_COLOR = "closetextcolor";
+	private static final String TEXT_HEIGHT = "textheight";
     private static final String ARROW_WIDTH = "arrowwidth";
     private static final String ARROW_HEIGHT = "arrowheight";
     
@@ -122,6 +123,7 @@ public class InAppBrowser extends CordovaPlugin {
     private String titleColor;
     private String closeUrl;
     private String closeTextColor;
+	private String textHeight;	
     private String arrowWidth;
     private String arrowHeight;
     
@@ -331,10 +333,12 @@ public class InAppBrowser extends CordovaPlugin {
             HashMap<String, Boolean> map = new HashMap<String, Boolean>();
             StringTokenizer features = new StringTokenizer(optString, ",");
             StringTokenizer option;
+			this.textHeight = "12";
             while(features.hasMoreElements()) {
                 option = new StringTokenizer(features.nextToken(), "=");
                 if (option.hasMoreElements()) {
                     String key = option.nextToken();
+					
                     if (key.equalsIgnoreCase(CLOSE_BUTTON_CAPTION))
                     {
                         this.buttonLabel = option.nextToken();
@@ -374,6 +378,10 @@ public class InAppBrowser extends CordovaPlugin {
                     else if(key.equals(CLOSE_TEXT_COLOR))
                     {
                     	this.closeTextColor = option.nextToken();
+                    }
+					else if(key.equals(TEXT_HEIGHT))
+                    {
+                    	this.textHeight = option.nextToken();
                     }
                     else if(key.equals(ARROW_WIDTH))
                     {
@@ -689,7 +697,7 @@ public class InAppBrowser extends CordovaPlugin {
                 {
                 	title = new TextView(cordova.getActivity());
                 	title.setText(toolBarTitle);
-                	title.setTextSize(40);
+                	title.setTextSize(textHeight);
                 	
                 	if(titleColor != null)
                 	{
@@ -755,7 +763,7 @@ public class InAppBrowser extends CordovaPlugin {
                 close.setId(5);
                 close.setText(buttonLabel);
                 close.setGravity(Gravity.CENTER);
-                close.setTextSize(40);
+                close.setTextSize(textHeight);
                 close.setTypeface(null, Typeface.BOLD);
                 
                 if(closeTextColor != null)

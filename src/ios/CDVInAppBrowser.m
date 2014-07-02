@@ -625,7 +625,7 @@ int TOOLBAR_HEIGHT = 50;
     self.forwardButton.imageInsets = UIEdgeInsetsZero;
     
     self.titleLabel = [[UILabel alloc] initWithFrame:toolbarFrame];
-    [self.titleLabel setFont:[UIFont boldSystemFontOfSize:40]];
+    [self.titleLabel setFont:[UIFont boldSystemFontOfSize:_browserOptions.closetextcolor]];
     [self.titleLabel setBackgroundColor:[UIColor clearColor]];
     [self.titleLabel setTextColor:[UIColor whiteColor]];
     [self.titleLabel setText:_browserOptions.toolbartitle];
@@ -679,7 +679,7 @@ int TOOLBAR_HEIGHT = 50;
     [closeBtn addTarget:self action:@selector(close)forControlEvents:UIControlEventTouchUpInside];
     [closeBtn setFrame:CGRectMake(0.0f, 0.0f, 150.0f, TOOLBAR_HEIGHT)];
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 150.0f, TOOLBAR_HEIGHT)];
-    [label setFont:[UIFont boldSystemFontOfSize:40]];
+    [label setFont:[UIFont boldSystemFontOfSize:_browserOptions.closetextcolor]];
     [label setText:title];
     label.textAlignment = NSTextAlignmentCenter;
     
@@ -1047,7 +1047,7 @@ int TOOLBAR_HEIGHT = 50;
         self.suppressesincrementalrendering = NO;
         self.hidden = NO;
         self.disallowoverscroll = NO;
-        
+        self.textheight = 12;
         self.toolbarcolor = nil;
     }
 
